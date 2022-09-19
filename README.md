@@ -1,5 +1,5 @@
 # Project: Battleship Game
-### [Live Link 👈](https://waldorfio.github.io/weather-app/)
+### [Live Link 👈](https://waldorfio.github.io/battleship-project/)
 An implementation of the classic battleship game.
 Application built using vanilla JavaScript ES6, CSS3, and HTML5. Packaged using Webpack.
 
