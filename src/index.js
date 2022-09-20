@@ -1,37 +1,17 @@
 /* eslint-disable semi */
 import './style.css';
+const factoryShip = require('./factories/factoryShip');
+const factoryBoard = require('./factories/factoryBoard')
 
 console.clear();
 console.log('-----------');
 
-/// Create Factory Functions
-
-function createShip (length, sunk, statusArr) {
-  return {
-    length,
-    sunk,
-    statusArr,
-    initialise () {
-      for (let i = 0; i < length; i++) { statusArr.push(false) };
-      console.log(statusArr);
-    },
-    hit (num) {
-      statusArr[num] = 'hit!';
-      console.log(statusArr);
-    },
-    isSunk () {
-      for (let i = 0; i < length; i++) {
-        if (statusArr[i] === 'hit!') {
-          if (i === length - 1) { return true } // Return true if you have reached last array elem
-          continue
-        } else if (statusArr[i] !== 'hit!') { // Return false if hit
-          return false
-        }
-      }
-    }
-  };
-}
-// let ship = createShip(3, false, []);
+/// Initialise Factory Functions
+const ship = factoryShip(3, false, []);
+ship.initialise(); // Filling up the empty array with false values
+ship.hit(2);
+ship.hit(2);
+ship.isSunk();
 
 // Create an empty 10x10 array
 const boardArr = [];
@@ -39,20 +19,6 @@ for (let i = 0; i < 10; i++) {
   boardArr.push([])
   for (let j = 0; j < 10; j++) {
     boardArr[i].push([]);
-  }
-}
-
-function gameBoard () {
-  return {
-    placeShip (ship, x, y) {
-      if (ship.length + y < 10) { // If the ship will not be out of bounds
-        for (let i = 0; i < ship.length; i++) {
-          boardArr[x][y + i] = ship;
-        }
-      } else { console.log('ship will not fit') }
-    },
-    receiveAttack (idx) {
-    }
   }
 }
 
