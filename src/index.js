@@ -33,6 +33,34 @@ function createShip(length, sunk, statusArr) {
 }
 // let ship = createShip(3, false, []);
 
+
+// Create an empty 10x10 array
+let boardArr = [];
+for (i=0; i<10; i++) {
+    boardArr.push([])
+    for (j=0; j<10; j++) {
+        boardArr [i].push([]);
+    }
+}
+
+function gameBoard() {
+    return {
+        placeShip(ship, x, y) {
+            if (ship.length + y < 10) { // If the ship will not be out of bounds
+                for (i=0; i<ship.length; i++) {
+                    boardArr[x][y+i] = ship;
+                }
+            } else {console.log('ship will not fit')}
+
+        },
+        receiveAttack(idx) {
+        },
+    }
+}
+
+
+
+
     //// LOGIC 1: LANDING PAGE
 
 wipeLanding = () => {
