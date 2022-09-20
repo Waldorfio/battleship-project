@@ -13,7 +13,7 @@ h1 {
     font-size: 3em;
 }
 
-body {  /* To center the landing-cont */
+#outer-cont {
     height: 100vh;
     display: grid;
     justify-items: center;
@@ -28,3 +28,15 @@ body {  /* To center the landing-cont */
     justify-items: center;
     align-items: center;
 }
+
+#square-cont {
+    display: grid;
+    grid-template-columns: repeat(10, 5px);
+    grid-template-rows: repeat(10, 5px);
+    gap: 3px;
+
+    border: 1px solid red;
+}
+    .square {
+        border: 1px solid black;
+    }
