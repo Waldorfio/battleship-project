@@ -3,9 +3,11 @@ An implementation of the classic battleship game.
 Application built using vanilla JavaScript ES6, CSS3, and HTML5. Packaged using Webpack.
 
 ### Features
--	Verse a fully fledged AI
-    - a
-- 
+- Create a custom gameboard with various battleships	
+- Verse an randomised AI
+    - Interact with a hidden enemy gameboard to fire shots
+- Observe shots received on your own gameboard
+
 ### Goals
 - Practice the basics of testing using Jest
 - Practice working with Test Driven Development (TDD) concepts in mind
@@ -13,7 +15,8 @@ Application built using vanilla JavaScript ES6, CSS3, and HTML5. Packaged using 
 
 ### Challenges Faced
 - Learning Jest
-- 
+- Actively applying TDD, over console.logs and DOM error traceback
+- Actively developing pure functions
 
 ## How to run the app
 ### 1. Click the hosted link below
@@ -38,7 +41,9 @@ OR
     - Each player is given 1 turn, with a 'hit' giving the player an extra turn
 
 ## Future Features
--	AI with scaling difficulty
+- Selection of axis for ship placement
+- Disallowing overlapping ship placement
+- AI with scaling difficulty
 - Play against other players
 - Account, login/signup for a personal account to store scores
 
