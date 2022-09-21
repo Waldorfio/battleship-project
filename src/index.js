@@ -23,14 +23,10 @@ function idxToCoords (idx) { // Function to convert an index, to an x,y coord
 
 // Player 1 Initialise
 const boardPlayer = factoryBoard([]);
-const shipPlayer = factoryShip(3, false, []);
 boardPlayer.initialise(); // Create an empty 10x10 array
-shipPlayer.initialise(); // Filling up the empty array with false values
 // Player 2 Initialise
 const boardBot = factoryBoard([]);
-const shipBot = factoryShip(3, false, []);
 boardBot.initialise();
-shipBot.initialise();
 
 const player1 = factoryPlayer('placeholder', boardPlayer);
 const player2 = factoryPlayer('computer bot', boardBot);
@@ -58,14 +54,14 @@ function buildBoardDOM () {
   buildCont.id = 'build-cont';
   promptBuild.id = 'prompt-build';
   squareCont.id = 'square-cont';
-  promptBuild.innerHTML = 'BUILD YOUR BOARD ' + player1.name + '!';
+  promptBuild.innerHTML = player1.name + ', PLACE YOUR CARRIER!';
   document.getElementById('outer-cont').appendChild(buildCont);
   buildCont.appendChild(promptBuild);
   buildCont.appendChild(squareCont);
   for (let i = 0; i < 100; i++) {
     const square = document.createElement('div');
     square.className = 'square';
-    square.addEventListener('click', clickedSquare.bind(this, i, square));
+    square.addEventListener('click', clickedSquare.bind(this, i, square, shipIdx));
     squareCont.appendChild(square);
   }
 }
@@ -78,21 +74,25 @@ function buildBoardDOM () {
 // playerSubOne: 1 (two of these)
 // playerSubTwo: 1 (two of these)
 
-const playerCarrier = factoryShip(5, false, []);
-const playerBattleship = factoryShip(4, false, []);
-const playerCruiser = factoryShip(3, false, []);
-const playerDestroyerOne = factoryShip(2, false, []);
-const playerDestroyerTwo = factoryShip(2, false, []);
-const playerSubOne = factoryShip(1, false, []);
-const playerSubTwo = factoryShip(1, false, []);
+const playerCarrier = factoryShip(5, false, [], 'carrier');
+const playerBattleship = factoryShip(4, false, [], 'battleship');
+const playerCruiser = factoryShip(3, false, [], 'cruiser');
+const playerDestroyerOne = factoryShip(2, false, [], 'first destroyer');
+const playerDestroyerTwo = factoryShip(2, false, [], 'second destroyer');
+const playerSubOne = factoryShip(1, false, [], 'first sub');
+const playerSubTwo = factoryShip(1, false, [], 'second sub');
+const playerShipArr = [playerCarrier, playerBattleship,
+  playerCruiser, playerDestroyerOne, playerDestroyerTwo,
+  playerSubOne, playerSubTwo]
+let shipIdx = [0];
 
-const botCarrier = factoryShip(5, false, []);
-const botBattleship = factoryShip(4, false, []);
-const botCruiser = factoryShip(3, false, []);
-const botDestroyerOne = factoryShip(2, false, []);
-const botDestroyerTwo = factoryShip(2, false, []);
-const botSubOne = factoryShip(1, false, []);
-const botSubTwo = factoryShip(1, false, []);
+const botCarrier = factoryShip(5, false, [], 'carrier');
+const botBattleship = factoryShip(4, false, [], 'battleship');
+const botCruiser = factoryShip(3, false, [], 'cruiser');
+const botDestroyerOne = factoryShip(2, false, [], 'first destroyer');
+const botDestroyerTwo = factoryShip(2, false, [], 'second destroyer');
+const botSubOne = factoryShip(1, false, [], 'first sub');
+const botSubTwo = factoryShip(1, false, [], 'second sub');
 
 playerCarrier.initialise();
 playerBattleship.initialise();
@@ -111,18 +111,18 @@ botSubOne.initialise();
 botSubTwo.initialise();
 
 // Control Ship Placement
-function clickedSquare (i, square) {
+function clickedSquare (i, square, shipIdx) {
   // Convert idx to x, y coords:
   const x = idxToCoords(i)[0];
   const y = idxToCoords(i)[1];
   // Place the ship on the players board
-  console.log('placed carrier at: ' + x + ', ' + y);
-  boardPlayer.placeShip(playerCarrier, x, y);
-  // Update DOM to show ship
-  const currentShip = playerCarrier.length;
-  for (let j = 0; j < currentShip; j++) {
-    square.style['background-color'] = 'grey';
-    square = square.nextSibling;
+  const ship = playerShipArr[shipIdx[0]];
+  const placedShip = boardPlayer.placeShip(ship, x, y, square, shipIdx);
+  // Update the DOM message with carrier name
+  if (placedShip === true) {
+    const nextShip = playerShipArr[shipIdx[0]];
+    const promptBuild = document.getElementById('prompt-build');
+    promptBuild.innerHTML = 'NOW PLACE YOUR ' + nextShip.name.toUpperCase() + '!';
   }
 }
 
