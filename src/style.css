@@ -19,24 +19,32 @@ h1 {
     justify-items: center;
     align-items: center;
 }
-
-#landing-cont {
-    display: grid;
-    grid-template-columns: 400px;
-    grid-template-rows: repeat(4, 70px);
-    gap: 10px;
-    justify-items: center;
-    align-items: center;
-}
-
-#square-cont {
-    display: grid;
-    grid-template-columns: repeat(10, 5px);
-    grid-template-rows: repeat(10, 5px);
-    gap: 3px;
-
-    border: 1px solid red;
-}
-    .square {
-        border: 1px solid black;
+/* PAGE 1: LANDING PAGE */
+    #landing-cont {
+        display: grid;
+        grid-template-columns: 400px;
+        grid-template-rows: repeat(4, 70px);
+        gap: 10px;
+        justify-items: center;
+        align-items: center;
     }
+
+/* PAGE 2: BUILD YOUR BOARD */
+    #build-cont {
+        display: grid;
+        grid-template-rows: 50px 1fr;
+    }
+        #prompt-build {
+            align-self: center;
+            justify-self: center;
+            font-size: 1.5em;
+        }
+        #square-cont {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            grid-template-rows: repeat(10, 30px);
+            gap: 3px;
+        }
+            .square {
+                border: 1px solid black;
+            }
