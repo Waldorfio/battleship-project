@@ -11,16 +11,22 @@ function factoryBoard (boardArr) {
       }
       return boardArr
     },
-    placeShip (ship, x, y) {
+    placeShip (ship, x, y, square, shipIdx) {
       if (ship.length + y < 11) { // If the ship will not be out of bounds
         // Place ship in array
         for (let k = 0; k < ship.length; k++) {
           boardArr[x][y + k] = ship;
         }
-        // console.log(boardArr);
+        // Update DOM to show ship
+        for (let j = 0; j < ship.length; j++) {
+          square.style['background-color'] = 'grey';
+          square = square.nextSibling;
+        }
+        // Increment shipIdx, so we know to place the next ship
+        shipIdx[0] = shipIdx[0] + 1;
         return true
       } else {
-        console.log('Ship will not fit!')
+        alert('Ship will not fit! Try again.')
         return false
       }
     },

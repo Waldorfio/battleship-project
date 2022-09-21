@@ -1,9 +1,10 @@
 /* eslint-disable semi */
-function factoryShip (length, sunk, statusArr) {
+function factoryShip (length, sunk, statusArr, name) {
   return {
     length,
     sunk,
     statusArr,
+    name,
     initialise () {
       for (let i = 0; i < length; i++) { statusArr.push(false) };
     },
