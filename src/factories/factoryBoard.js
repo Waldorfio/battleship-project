@@ -3,7 +3,6 @@ function factoryBoard (boardArr) {
   return {
     boardArr,
     initialise () {
-      const boardArr = [];
       for (let i = 0; i < 10; i++) {
         boardArr.push([])
         for (let j = 0; j < 10; j++) {
@@ -13,11 +12,17 @@ function factoryBoard (boardArr) {
       return boardArr
     },
     placeShip (ship, x, y) {
-      if (ship.length + y < 10) { // If the ship will not be out of bounds
-        for (let i = 0; i < ship.length; i++) {
-          boardArr[x][y + i] = ship
+      if (ship.length + y < 11) { // If the ship will not be out of bounds
+        // Place ship in array
+        for (let k = 0; k < ship.length; k++) {
+          boardArr[x][y + k] = ship;
         }
-      } else { console.log('ship will not fit') }
+        // console.log(boardArr);
+        return true
+      } else {
+        console.log('Ship will not fit!')
+        return false
+      }
     },
     receiveAttack (idx) {
     }

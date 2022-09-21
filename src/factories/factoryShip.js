@@ -6,7 +6,6 @@ function factoryShip (length, sunk, statusArr) {
     statusArr,
     initialise () {
       for (let i = 0; i < length; i++) { statusArr.push(false) };
-      console.log(statusArr)
     },
     hit (index) {
       statusArr[index] = 'hit!'
