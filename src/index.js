@@ -2,44 +2,49 @@
 import './style.css';
 const factoryShip = require('./factories/factoryShip');
 const factoryBoard = require('./factories/factoryBoard')
+const factoryPlayer = require('./factories/factoryPlayer')
 
 console.clear();
 console.log('-----------');
 
-/// Initialise Factory Functions
-const ship = factoryShip(3, false, []);
-ship.initialise(); // Filling up the empty array with false values
-ship.hit(2);
-ship.hit(2);
-ship.isSunk();
+/// / PART 1: INITIALISE PLAYERS AND BOARDS ////////////////
 
-// Create an empty 10x10 array
-const boardArr = [];
-for (let i = 0; i < 10; i++) {
-  boardArr.push([])
-  for (let j = 0; j < 10; j++) {
-    boardArr[i].push([]);
-  }
-}
+// Player 1 Initialise
+const boardPlayer = factoryBoard();
+const shipPlayer = factoryShip(3, false, []);
+boardPlayer.initialise(); // Create an empty 10x10 array
+shipPlayer.initialise(); // Filling up the empty array with false values
+// Player 2 Initialise
+const boardBot = factoryBoard();
+const shipBot = factoryShip(3, false, []);
+boardBot.initialise();
+shipBot.initialise();
 
-/// / LOGIC 1: LANDING PAGE
+const player1 = factoryPlayer('placeholder', boardPlayer);
+const player2 = factoryPlayer('computer bot', boardBot);
 
-const wipeLanding = () => {
+/// / PART 2: LANDING PAGE //// ///////////////////////////
+
+// Add START GAME button logic
+const wipeLanding = () => { // Initialise eventListener arrow function
   // Extract Player Name
   const playerName = document.getElementById('player-name').value;
+  console.log('playerName: ' + playerName);
   // Wipe Landing Page
   const landingPage = document.getElementById('landing-cont');
-  landingPage.innerHTML = '';
-  console.log('playerName: ' + playerName);
-
-  buildBoard()
+  landingPage.remove();
+  // Save Player names
+  player1.name = playerName.toUpperCase();
+  // Build the next page
+  buildBoardDOM ()
 }
-// Add START GAME button logic
 const startButton = document.getElementById('start-button');
 startButton.addEventListener('click', wipeLanding);
 
-/// / LOGIC 2: BUILD BOARD
-function buildBoard () {
+/// / PART 3: BUILD YOUR BOARD //// //////////////////////
+
+// a
+function buildBoardDOM () {
   // Build Board Container
   const buildCont = document.createElement('div');
   buildCont.id = 'build-cont'
@@ -47,7 +52,7 @@ function buildBoard () {
   // Greet Player personally
   const promptBuild = document.createElement('div');
   promptBuild.id = 'prompt-build';
-  promptBuild.innerHTML = 'Build your board TEST##';
+  promptBuild.innerHTML = 'BUILD YOUR BOARD '+player1.name+'!';
   buildCont.appendChild(promptBuild);
   // Build the grid
   const squareCont = document.createElement('div');
@@ -67,4 +72,4 @@ function clickedSquare (i) {
 
 // Sub logic 2.1: Randomize AI grid
 
-/// / LOGIC 3: PLAY GAME
+/// / PART 4: PLAY GAME //// //////////////////////
