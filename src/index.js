@@ -2,7 +2,7 @@
 import './style.css';
 const factoryShip = require('./factories/factoryShip');
 const factoryBoard = require('./factories/factoryBoard')
-const factoryPlayer = require('./factories/factoryPlayer')
+const factoryPlayer = require('./factories/factoryPlayer');
 
 console.clear();
 console.log('-----------');
@@ -58,6 +58,7 @@ function buildBoardDOM () {
   document.getElementById('outer-cont').appendChild(buildCont);
   buildCont.appendChild(promptBuild);
   buildCont.appendChild(squareCont);
+  // Create the grid squares
   for (let i = 0; i < 100; i++) {
     const square = document.createElement('div');
     square.className = 'square';
@@ -66,14 +67,6 @@ function buildBoardDOM () {
   }
 }
 
-// playerCarrier 5
-// playerBattleship: 4
-// playerCruiser: 3
-// playerDestroyerOne: 2 (two of these)
-// playerDestroyerTwo: 2 (two of these)
-// playerSubOne: 1 (two of these)
-// playerSubTwo: 1 (two of these)
-
 const playerCarrier = factoryShip(5, false, [], 'carrier');
 const playerBattleship = factoryShip(4, false, [], 'battleship');
 const playerCruiser = factoryShip(3, false, [], 'cruiser');
@@ -81,11 +74,6 @@ const playerDestroyerOne = factoryShip(2, false, [], 'first destroyer');
 const playerDestroyerTwo = factoryShip(2, false, [], 'second destroyer');
 const playerSubOne = factoryShip(1, false, [], 'first sub');
 const playerSubTwo = factoryShip(1, false, [], 'second sub');
-const playerShipArr = [playerCarrier, playerBattleship,
-  playerCruiser, playerDestroyerOne, playerDestroyerTwo,
-  playerSubOne, playerSubTwo]
-let shipIdx = [0];
-
 const botCarrier = factoryShip(5, false, [], 'carrier');
 const botBattleship = factoryShip(4, false, [], 'battleship');
 const botCruiser = factoryShip(3, false, [], 'cruiser');
@@ -101,7 +89,6 @@ playerDestroyerOne.initialise();
 playerDestroyerTwo.initialise();
 playerSubOne.initialise();
 playerSubTwo.initialise();
-
 botCarrier.initialise();
 botBattleship.initialise();
 botCruiser.initialise();
@@ -110,8 +97,25 @@ botDestroyerTwo.initialise();
 botSubOne.initialise();
 botSubTwo.initialise();
 
+const playerShipArr = [playerCarrier, playerBattleship,
+  playerCruiser, playerDestroyerOne, playerDestroyerTwo,
+  playerSubOne, playerSubTwo]
+const shipIdx = [0];
+
 // Control Ship Placement
 function clickedSquare (i, square, shipIdx) {
+  // Check if placed all ships or not
+  if (shipIdx[0] === 6) {
+    document.getElementById('prompt-build').innerHTML = 'Done! Now hit START when you are ready!';
+    // Place a new button element below grid to start game
+    const startGame = document.createElement('input');
+    const buildCont = document.getElementById('build-cont')
+    startGame.id = 'start-game';
+    startGame.type = 'button';
+    startGame.value = 'START GAME';
+    startGame.addEventListener('click', wipeBuilderBoard);
+    buildCont.appendChild(startGame);
+  }
   // Convert idx to x, y coords:
   const x = idxToCoords(i)[0];
   const y = idxToCoords(i)[1];
@@ -124,6 +128,25 @@ function clickedSquare (i, square, shipIdx) {
     const promptBuild = document.getElementById('prompt-build');
     promptBuild.innerHTML = 'NOW PLACE YOUR ' + nextShip.name.toUpperCase() + '!';
   }
+}
+
+/// / PART 4: SHOW GAMEBOARD FOR PLAY //// //////////////////////
+
+const wipeBuilderBoard = () => {
+  // Remove start-game button
+  document.getElementById('start-game').remove();
+  // Reset each square in the DOM
+  const squares = document.querySelectorAll('.square'); // Select all box classes
+  squares.forEach(square => {
+    square.style['background-color'] = 'white';
+  });
+  // Duplicate grid
+  const botCont = document.getElementById('build-cont').cloneNode(true);
+  const outerCont = document.getElementById('outer-cont');
+  botCont.id = 'bot-cont';
+  outerCont.appendChild(botCont);
+  // Adjust grid styling on outer container, to make grids side-by-side
+  outerCont.style['grid-template-columns'] = 'repeat(2, 1fr)';
 }
 
 // Sub logic 2.1: Randomize AI grid
