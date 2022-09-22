@@ -30,16 +30,17 @@ h1 {
     }
 
 /* PAGE 2: BUILD YOUR BOARD */
-    #build-cont {
+    #build-cont, #player-cont, #bot-cont {
         display: grid;
         grid-template-rows: 40px 1fr 40px;
     }
-        #prompt-build {
+        .prompts {
             align-self: center;
             justify-self: center;
             font-size: 1.1em;
+            color: red;
         }
-        #square-cont {
+        #player-squares, #bot-squares {
             display: grid;
             grid-template-columns: repeat(10, 30px);
             grid-template-rows: repeat(10, 30px);
@@ -50,4 +51,9 @@ h1 {
                 border: 1px solid black;
             }
         #start-game {
+        }
+        .scores {
+            justify-self: center;
+            align-self: center;
+            color: blue;
         }
