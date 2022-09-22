@@ -17,16 +17,20 @@ function factoryBoard (boardArr) {
         for (let k = 0; k < ship.length; k++) {
           boardArr[x][y + k] = ship;
         }
+
         // Update DOM to show ship
         for (let j = 0; j < ship.length; j++) {
           square.style['background-color'] = 'grey';
           square = square.nextSibling;
         }
+
         // Increment shipIdx, so we know to place the next ship
         shipIdx[0] = shipIdx[0] + 1;
+
         return true
       } else {
         alert('Ship will not fit! Try again.')
+
         return false
       }
     },
