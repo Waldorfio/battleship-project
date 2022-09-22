@@ -38,7 +38,6 @@ h1 {
             align-self: center;
             justify-self: center;
             font-size: 1.1em;
-            color: red;
         }
         #player-squares, #bot-squares {
             display: grid;
@@ -49,6 +48,12 @@ h1 {
         }
             .square {
                 border: 1px solid black;
+            }
+            #bot-squares > .square:hover {
+                border: 3px solid red;
+            }
+            #build-cont > #player-squares > .square:hover {
+                border: 3px solid green;
             }
         #start-game {
         }
