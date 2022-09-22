@@ -32,7 +32,7 @@ h1 {
 /* PAGE 2: BUILD YOUR BOARD */
     #build-cont {
         display: grid;
-        grid-template-rows: 50px 1fr;
+        grid-template-rows: 40px 1fr 40px;
     }
         #prompt-build {
             align-self: center;
@@ -49,3 +49,5 @@ h1 {
             .square {
                 border: 1px solid black;
             }
+        #start-game {
+        }
