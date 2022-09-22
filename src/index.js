@@ -3,6 +3,7 @@ import './style.css';
 const factoryShip = require('./factories/factoryShip');
 const factoryBoard = require('./factories/factoryBoard')
 const factoryPlayer = require('./factories/factoryPlayer');
+const gameLoop = require('./factories/factoryPlayer');
 
 console.clear();
 console.log('-----------');
@@ -145,10 +146,16 @@ const wipeBuilderBoard = () => {
     square.style['background-color'] = 'white';
   });
 
+  buildGameBoards();
+}
+
+function buildGameBoards () {
   // Duplicate grid
   const outerCont = document.getElementById('outer-cont');
   const playerCont = document.getElementById('build-cont');
+  const playerPrompt = document.getElementById('player-prompt');
   const botCont = playerCont.cloneNode(true);
+  const botPrompt = botCont.firstChild;
   playerCont.id = 'player-cont';
   botCont.id = 'bot-cont';
   outerCont.appendChild(botCont);
@@ -157,7 +164,7 @@ const wipeBuilderBoard = () => {
   outerCont.style['grid-template-columns'] = 'repeat(2, 1fr)';
 
   // Rename bot's element children, as they were duplicated from the player
-  botCont.firstChild.id = 'bot-prompt';
+  botPrompt.id = 'bot-prompt'
   botCont.firstChild.nextSibling.id = 'bot-squares';
 
   // Add a new div to hold scores for each grid
@@ -171,8 +178,10 @@ const wipeBuilderBoard = () => {
   botScore.innerHTML = 'Bot score: 0';
   playerCont.appendChild(playerScore);
   botCont.appendChild(botScore);
+
+  // Change prompts
+  playerPrompt.innerHTML = 'FRIENDLY WATERS';
+  botPrompt.innerHTML = 'ENEMY WATERS';
+
+  gameLoop(); // Run the game loop
 }
-
-// Sub logic 2.1: Randomize AI grid
-
-/// / PART 4: PLAY GAME //// //////////////////////
