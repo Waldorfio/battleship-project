@@ -37,13 +37,14 @@ h1 {
         #prompt-build {
             align-self: center;
             justify-self: center;
-            font-size: 1.5em;
+            font-size: 1.1em;
         }
         #square-cont {
             display: grid;
             grid-template-columns: repeat(10, 30px);
             grid-template-rows: repeat(10, 30px);
             gap: 3px;
+            margin: 30px;
         }
             .square {
                 border: 1px solid black;
