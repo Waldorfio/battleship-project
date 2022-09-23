@@ -1,17 +1,16 @@
 /* eslint-disable semi */
-import './style.css';
-const factoryShip = require('./factories/factoryShip');
+require('./style.css');
 const factoryBoard = require('./factories/factoryBoard')
 const factoryPlayer = require('./factories/factoryPlayer');
-const gameLoop = require('./factories/factoryPlayer');
-
+const playerShipArr = require('./initialiseShips');
+const gameLoop = require('./gameLoop');
 console.clear();
 console.log('-----------');
 
 function idxToCoords (idx) { // Function to convert an index, to an x,y coord
   if (idx < 10) { // You are in the first row
-    const x = idx;
-    const y = 0;
+    const x = 0;
+    const y = idx;
     return [parseInt(x), parseInt(y)];
   } else if (idx >= 10) { // Otherwise split the numbers
     const x = idx.toString()[0];
@@ -23,12 +22,19 @@ function idxToCoords (idx) { // Function to convert an index, to an x,y coord
 /// / PART 1: INITIALISE PLAYERS AND BOARDS ////////////////
 
 // Player 1 & Bot Initialise
+function randomiseBoard (p2) {
+  const setGrid = require('./setGrid');
+  p2.gameBoard.boardArr = setGrid;
+}
+
 const boardPlayer = factoryBoard([]);
 const boardBot = factoryBoard([]);
-boardPlayer.initialise(); // Create an empty 10x10 array
-boardBot.initialise();
 const player1 = factoryPlayer('placeholder', boardPlayer);
 const player2 = factoryPlayer('computer bot', boardBot);
+player1.gameBoard.reset(); // Create an empty 10x10 array
+player2.gameBoard.reset(); // Create an empty 10x10 array
+randomiseBoard(player2); // Randomise the bots board
+console.log(player2.gameBoard.boardArr);
 
 /// / PART 2: LANDING PAGE //// ///////////////////////////
 
@@ -68,42 +74,8 @@ function buildBoardDOM () {
   }
 }
 
-const playerCarrier = factoryShip(5, false, [], 'carrier');
-const playerBattleship = factoryShip(4, false, [], 'battleship');
-const playerCruiser = factoryShip(3, false, [], 'cruiser');
-const playerDestroyerOne = factoryShip(2, false, [], 'first destroyer');
-const playerDestroyerTwo = factoryShip(2, false, [], 'second destroyer');
-const playerSubOne = factoryShip(1, false, [], 'first sub');
-const playerSubTwo = factoryShip(1, false, [], 'second sub');
-const botCarrier = factoryShip(5, false, [], 'carrier');
-const botBattleship = factoryShip(4, false, [], 'battleship');
-const botCruiser = factoryShip(3, false, [], 'cruiser');
-const botDestroyerOne = factoryShip(2, false, [], 'first destroyer');
-const botDestroyerTwo = factoryShip(2, false, [], 'second destroyer');
-const botSubOne = factoryShip(1, false, [], 'first sub');
-const botSubTwo = factoryShip(1, false, [], 'second sub');
-
-playerCarrier.initialise();
-playerBattleship.initialise();
-playerCruiser.initialise();
-playerDestroyerOne.initialise();
-playerDestroyerTwo.initialise();
-playerSubOne.initialise();
-playerSubTwo.initialise();
-botCarrier.initialise();
-botBattleship.initialise();
-botCruiser.initialise();
-botDestroyerOne.initialise();
-botDestroyerTwo.initialise();
-botSubOne.initialise();
-botSubTwo.initialise();
-
-const playerShipArr = [playerCarrier, playerBattleship,
-  playerCruiser, playerDestroyerOne, playerDestroyerTwo,
-  playerSubOne, playerSubTwo]
-const shipIdx = [0];
-
 // Control Ship Placement
+const shipIdx = [0];
 function clickedSquare (i, square, shipIdx) {
   // Check if placed all ships or not
   if (shipIdx[0] === 6) {
@@ -183,5 +155,7 @@ function buildGameBoards () {
   playerPrompt.innerHTML = 'FRIENDLY WATERS';
   botPrompt.innerHTML = 'ENEMY WATERS';
 
-  gameLoop(); // Run the game loop
+  gameLoop(player1, player2, idxToCoords) // Run the game loop
 }
+
+module.exports = { idxToCoords, player1, player2 };
