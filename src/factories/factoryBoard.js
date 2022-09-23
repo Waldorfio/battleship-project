@@ -2,7 +2,7 @@
 function factoryBoard (boardArr) {
   return {
     boardArr,
-    initialise () {
+    reset () {
       for (let i = 0; i < 10; i++) {
         boardArr.push([])
         for (let j = 0; j < 10; j++) {
@@ -15,7 +15,7 @@ function factoryBoard (boardArr) {
       if (ship.length + y < 11) { // If the ship will not be out of bounds
         // Place ship in array
         for (let k = 0; k < ship.length; k++) {
-          boardArr[x][y + k] = ship;
+          this.boardArr[x][y + k] = ship;
         }
 
         // Update DOM to show ship
@@ -26,7 +26,6 @@ function factoryBoard (boardArr) {
 
         // Increment shipIdx, so we know to place the next ship
         shipIdx[0] = shipIdx[0] + 1;
-
         return true
       } else {
         alert('Ship will not fit! Try again.')
@@ -34,7 +33,14 @@ function factoryBoard (boardArr) {
         return false
       }
     },
-    receiveAttack (idx) {
+    receiveAttack (x, y) {
+      if (this.boardArr[x][y].length === 0) {
+        console.log('MISSED!');
+        this.boardArr[x][y] = 'MISS';
+      } else if (this.boardArr[x][y].length !== 0) {
+        console.log('HIT @: ' + x + ',' + y);
+        this.boardArr[x][y] = 'HIT';
+      }
     }
   }
 }
