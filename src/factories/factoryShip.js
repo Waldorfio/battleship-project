@@ -1,5 +1,3 @@
-const { idxToCoords } = require('..')
-
 /* eslint-disable semi */
 function factoryShip (length, sunk, name) {
   return {
