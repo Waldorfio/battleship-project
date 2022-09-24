@@ -33,13 +33,15 @@ function factoryBoard (boardArr) {
         return false
       }
     },
-    receiveAttack (x, y) {
+    receiveAttack (x, y, square) {
       if (this.boardArr[x][y].length === 0) {
         console.log('MISSED!');
         this.boardArr[x][y] = 'MISS';
+        square.style['background-color'] = 'blue';
       } else if (this.boardArr[x][y].length !== 0) {
         console.log('HIT @: ' + x + ',' + y);
         this.boardArr[x][y] = 'HIT';
+        square.style['background-color'] = 'red';
       }
     }
   }
