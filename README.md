@@ -41,9 +41,9 @@ OR
     - Each player is given 1 turn, with a 'hit' giving the player an extra turn
 
 ## Future Features
-- Selection of axis for ship placement
-- Disallowing overlapping ship placement
 - AI with scaling difficulty
+- Selection of axis for ship placement
+- Disallowing bot to place ship after player makes an illegal move
 - Play against other players
 - Account, login/signup for a personal account to store scores
 
