@@ -158,5 +158,3 @@ function buildGameBoards () {
 
   gameLoop(player1, player2, idxToCoords) // Run the game loop
 }
-
-module.exports = { idxToCoords, player1, player2 };
