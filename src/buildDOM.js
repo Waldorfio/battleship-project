@@ -3,7 +3,8 @@
 require('./style.css');
 const factoryBoard = require('./factories/factoryBoard')
 const factoryPlayer = require('./factories/factoryPlayer');
-const playerShipArr = require('./initialiseShips');
+const shipArr = require('./initialiseShips');
+const playerShipArr = shipArr[0];
 const gameLoop = require('./gameLoop');
 console.clear();
 console.log('-----------');
@@ -147,8 +148,8 @@ function buildGameBoards () {
   botScore.id = 'bot-score';
   playerScore.className = 'scores';
   botScore.className = 'scores';
-  playerScore.innerHTML = 'Player score: 0';
-  botScore.innerHTML = 'Bot score: 0';
+  playerScore.innerHTML = 'Player Score: 0';
+  botScore.innerHTML = 'Bot Score: 0';
   playerCont.appendChild(playerScore);
   botCont.appendChild(botScore);
 
