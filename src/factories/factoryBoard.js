@@ -35,12 +35,10 @@ function factoryBoard (boardArr) {
     },
     receiveAttack (x, y, square) {
       if (this.boardArr[x][y].length === 0) {
-        console.log('MISSED!');
         this.boardArr[x][y] = 'MISS';
         square.style['background-color'] = 'blue';
       } else if (this.boardArr[x][y].length !== 0) {
-        console.log('HIT @: ' + x + ',' + y);
-        this.boardArr[x][y] = 'HIT';
+        this.boardArr[x][y].hit = true;
         square.style['background-color'] = 'red';
       }
     }
