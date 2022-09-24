@@ -5,8 +5,12 @@ function factoryShip (length, sunk, name, hit) {
     sunk,
     name,
     hit,
-    isSunk (board) {
-      console.log('***** IT RAN *******')
+    isSunk () {
+      if (this.hit === this.length) {
+        console.log(this.name.toUpperCase() + ' SUNK!')
+      } else if (this.hit !== this.length) {
+        console.log(this.hit + '/' + this.length)
+      }
     }
   }
 }

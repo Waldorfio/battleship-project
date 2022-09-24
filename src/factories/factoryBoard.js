@@ -34,11 +34,11 @@ function factoryBoard (boardArr) {
       }
     },
     receiveAttack (x, y, square) {
-      if (this.boardArr[x][y].length === 0) {
+      if (this.boardArr[x][y].length === 0) { // IF MISSED
         this.boardArr[x][y] = 'MISS';
         square.style['background-color'] = 'blue';
-      } else if (this.boardArr[x][y].length !== 0) {
-        this.boardArr[x][y].hit = true;
+      } else if (this.boardArr[x][y].length !== 0) { // IF HIT
+        this.boardArr[x][y].hit = this.boardArr[x][y].hit + 1;
         square.style['background-color'] = 'red';
       }
     }
