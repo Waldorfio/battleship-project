@@ -6,7 +6,9 @@ Application built using vanilla JavaScript ES6, CSS3, and HTML5. Packaged using 
 - Create a custom gameboard with various battleships	
 - Verse an randomised AI
     - Interact with a hidden enemy gameboard to fire shots
-- Observe shots received on your own gameboard
+- Instantly observe shots received on your own gameboard (from the bot)
+- View a scoreboard tracking ships sunk
+- Restart the game once a winner is announced
 
 ### Goals
 - Practice the basics of testing using Jest
