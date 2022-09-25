@@ -41,12 +41,10 @@ OR
     - Each player is given 1 turn, with a 'hit' giving the player an extra turn
 
 ## Future Features
-- Updated player/bot scores based on # of ships sunk
+- Randomise bot's chosen ships (currently bot choses same postions every game)
 - Giving a bonus round if the player, or bot hits a ship
 - Disallowing bot to place ship after player makes an illegal move
 - AI with scaling difficulty
 - Selection of axis for ship placement
-- Play against other players
-- Account, login/signup for a personal account to store scores
 
 ## Dependencies
