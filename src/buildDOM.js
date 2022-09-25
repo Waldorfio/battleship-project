@@ -1,7 +1,7 @@
 /* eslint-disable semi */
 
 require('./style.css');
-const factoryBoard = require('./factories/factoryBoard')
+const factoryBoard = require('./factories/factoryBoard');
 const factoryPlayer = require('./factories/factoryPlayer');
 const shipArr = require('./initialiseShips');
 const playerShipArr = shipArr[0];
@@ -136,6 +136,7 @@ function buildGameBoards () {
 
   // Adjust grid styling on outer container, to make grids side-by-side
   outerCont.style['grid-template-columns'] = 'repeat(2, 1fr)';
+  outerCont.style['grid-template-rows'] = '1fr 100px';
 
   // Rename bot's element children, as they were duplicated from the player
   botPrompt.id = 'bot-prompt'
