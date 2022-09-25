@@ -28,7 +28,7 @@ function factoryBoard (boardArr) {
         shipIdx[0] = shipIdx[0] + 1;
         return true
       } else {
-        alert('Ship will not fit! Try again.')
+        console.log('Ship will not fit! Try again.')
         return false
       }
     },
@@ -36,9 +36,11 @@ function factoryBoard (boardArr) {
       if (this.boardArr[x][y].length === 0) { // IF MISSED
         this.boardArr[x][y] = 'MISS';
         square.style.backgroundColor = 'blue';
+        return false
       } else if (this.boardArr[x][y].length !== 0) { // IF HIT
         this.boardArr[x][y].hit = this.boardArr[x][y].hit + 1;
         square.style.backgroundColor = 'red';
+        return true
       }
     }
   }

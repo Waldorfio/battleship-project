@@ -9,8 +9,10 @@ function factoryShip (length, sunk, name, hit) {
       if (this.hit === this.length) {
         console.log(this.name.toUpperCase() + ' SUNK!');
         updateScores(scoreDiv);
+        return true
       } else if (this.hit !== this.length) {
         console.log(this.hit + '/' + this.length)
+        return false
       }
     }
   }
