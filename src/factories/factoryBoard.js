@@ -14,16 +14,7 @@ function factoryBoard (boardArr) {
     placeShip (ship, x, y, square, shipIdx) {
       if (ship.length + y < 11) { // If the ship will not be out of bounds
         // Place ship in array
-        // let squareNext = square;
         for (let k = 0; k < ship.length; k++) {
-          // // Check if in conflict with other ships
-          // if (squareNext.style.backgroundColor) {
-          //   console.log(square.style.backgroundColor)
-          //   alert('Ship will not fit! Try again.')
-          //   return false
-          // }
-          // squareNext = square.nextSibling;
-          // Otherwise place ship
           this.boardArr[x][y + k] = ship;
         }
 
