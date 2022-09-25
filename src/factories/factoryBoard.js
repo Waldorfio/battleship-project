@@ -14,13 +14,22 @@ function factoryBoard (boardArr) {
     placeShip (ship, x, y, square, shipIdx) {
       if (ship.length + y < 11) { // If the ship will not be out of bounds
         // Place ship in array
+        // let squareNext = square;
         for (let k = 0; k < ship.length; k++) {
+          // // Check if in conflict with other ships
+          // if (squareNext.style.backgroundColor) {
+          //   console.log(square.style.backgroundColor)
+          //   alert('Ship will not fit! Try again.')
+          //   return false
+          // }
+          // squareNext = square.nextSibling;
+          // Otherwise place ship
           this.boardArr[x][y + k] = ship;
         }
 
         // Update DOM to show ship
         for (let j = 0; j < ship.length; j++) {
-          square.style['background-color'] = 'grey';
+          square.style.backgroundColor = 'grey';
           square = square.nextSibling;
         }
 
@@ -29,17 +38,16 @@ function factoryBoard (boardArr) {
         return true
       } else {
         alert('Ship will not fit! Try again.')
-
         return false
       }
     },
     receiveAttack (x, y, square) {
       if (this.boardArr[x][y].length === 0) { // IF MISSED
         this.boardArr[x][y] = 'MISS';
-        square.style['background-color'] = 'blue';
+        square.style.backgroundColor = 'blue';
       } else if (this.boardArr[x][y].length !== 0) { // IF HIT
         this.boardArr[x][y].hit = this.boardArr[x][y].hit + 1;
-        square.style['background-color'] = 'red';
+        square.style.backgroundColor = 'red';
       }
     }
   }
