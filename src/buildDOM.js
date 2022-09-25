@@ -36,7 +36,6 @@ const player2 = factoryPlayer('computer bot', boardBot);
 player1.gameBoard.reset(); // Create an empty 10x10 array
 player2.gameBoard.reset(); // Create an empty 10x10 array
 randomiseBoard(player2); // Randomise the bots board
-console.log(player2.gameBoard.boardArr);
 
 /// / PART 2: LANDING PAGE //// ///////////////////////////
 
