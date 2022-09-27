@@ -44,7 +44,7 @@ OR
 
 ## Future Features
 - Randomise bot's chosen ships (currently bot choses same postions every game)
-- Giving a bonus round if the player, or bot hits a ship
+- Giving the bot a bonus round if player hits ship
 - Disallowing bot to place ship after player makes an illegal move
 - AI with scaling difficulty
 - Selection of axis for ship placement
