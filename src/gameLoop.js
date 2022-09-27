@@ -16,15 +16,18 @@ function playerFireShot (square, p1, p2, idx, idxToCoords) {
   // Player fires a shot, update the bots object/DOM
   const x = idxToCoords(idx)[0];
   const y = idxToCoords(idx)[1];
+  // The player misses
   if (square.style.backgroundColor !== 'white') {
     alert('Already fired here. Try again.');
+  // The player has hit a shot
   } else {
-    p2.gameBoard.receiveAttack(x, y, square);
-    try { // Try checking if the ship has sunk (REFACTOR LATER)
+    const hitShip = p2.gameBoard.receiveAttack(x, y, square); // Make bot gameboard receive attack
+    try { // Try checking if the ship has sunk
       const scoreDiv = document.getElementById('player-score');
       p2.gameBoard.boardArr[x][y].isSunk(scoreDiv);
-    } catch (error) {
-    }
+    } catch (error) {};
+    // Let the player repeat the turn once more (if hit a ship_)
+    if (hitShip === true) { return } // break the current loop
   }
   botFireShot(p1, idxToCoords);
 }
@@ -39,12 +42,13 @@ function botFireShot (p1, idxToCoords) {
     console.log('Bot made an illegal move. Trying again.');
     botFireShot(p1, idxToCoords);
   } else {
-    p1.gameBoard.receiveAttack(x, y, squares[idx]);
+    const hitShip = p1.gameBoard.receiveAttack(x, y, squares[idx]);
     try { // Try checking if the ship has sunk (REFACTOR LATER)
       const scoreDiv = document.getElementById('bot-score');
       p1.gameBoard.boardArr[x][y].isSunk(scoreDiv);
-    } catch (error) {
-    }
+    } catch (error) {};
+    // Let the player repeat the turn once more (if hit a ship_)
+    if (hitShip === true) { return } // break the current loop
   }
 }
 
