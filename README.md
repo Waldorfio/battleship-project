@@ -43,9 +43,8 @@ OR
     - Each player is given 1 turn, with a 'hit' giving the player an extra turn
 
 ## Future Features
-- Randomise bot's chosen ships (currently bot choses same postions every game)
+- Randomise the bots initial ship placement
 - Giving the bot a bonus round if player hits ship
-- Disallowing bot to place ship after player makes an illegal move
 - AI with scaling difficulty
 - Selection of axis for ship placement
 
