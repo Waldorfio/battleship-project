@@ -55,8 +55,6 @@ h1 {
             #build-cont > #player-squares > .square:hover {
                 border: 3px solid green;
             }
-        #start-game {
-        }
         #restart-game {
             grid-column: 1/3;
         }
