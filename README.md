@@ -1,6 +1,6 @@
 # Project: Battleship Game
 An implementation of the classic battleship game.
-Application built using vanilla JavaScript ES6, CSS3, and HTML5. Packaged using Webpack.
+Application developed using JavaScript, CSS3, and HTML5. Packaged using Webpack.
 
 ### Features
 - Create a custom gameboard with various battleships	
