@@ -47,5 +47,6 @@ OR
 - Giving the bot a bonus round if player hits ship
 - AI with scaling difficulty
 - Selection of axis for ship placement
+- Rebuild codebase using react.js
 
 ## Dependencies
