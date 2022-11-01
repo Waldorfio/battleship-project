@@ -1,6 +1,7 @@
 # Project: Battleship Game
 An implementation of the classic battleship game.
 Application developed using JavaScript, CSS3, and HTML5. Packaged using Webpack.
+## [Live Link 👈](https://waldorfio.github.io/battleship-project/)
 
 ### Features
 - Create a custom gameboard with various battleships	
@@ -9,6 +10,8 @@ Application developed using JavaScript, CSS3, and HTML5. Packaged using Webpack.
 - Instantly observe shots received on your own gameboard (from the bot)
 - View a scoreboard tracking ships sunk
 - Restart the game once a winner is announced
+
+![](screencap.PNG)
 
 ### Goals
 - Practice the basics of testing using Jest
@@ -21,8 +24,7 @@ Application developed using JavaScript, CSS3, and HTML5. Packaged using Webpack.
 - Actively developing pure functions
 
 ## How to run the app
-### 1. Click the hosted link below
-#### [Live Link 👈](https://waldorfio.github.io/battleship-project/)
+### 1. Click the [hosted link](https://waldorfio.github.io/battleship-project/)
 
 OR
 
