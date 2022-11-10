@@ -52,3 +52,7 @@ OR
 - Rebuild codebase using react.js
 
 ## Dependencies
+- CSS Loader
+- File Loader
+- Jest
+- Webpack CLI
