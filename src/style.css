@@ -1,12 +1,6 @@
-@import url(//db.onlinewebfonts.com/c/6c418c270348070b8e5ebbaf78a94917?family=Bombardment+3D);
 @font-face {
     font-family: "Bombardment 3D";
-    src: url("//db.onlinewebfonts.com/t/6c418c270348070b8e5ebbaf78a94917.eot");
-    src: url("//db.onlinewebfonts.com/t/6c418c270348070b8e5ebbaf78a94917.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/6c418c270348070b8e5ebbaf78a94917.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/6c418c270348070b8e5ebbaf78a94917.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/6c418c270348070b8e5ebbaf78a94917.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/6c418c270348070b8e5ebbaf78a94917.svg#Bombardment 3D") format("svg");
+    src: url("Bombardment3D.ttf") format("truetype");
 }
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 * {
