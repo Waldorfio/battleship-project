@@ -2,6 +2,10 @@
     font-family: "Bombardment 3D";
     src: url("Bombardment3D.ttf") format("truetype");
 }
+@font-face {
+    font-family: "Bombardment";
+    src: url("Bombardment.ttf") format("truetype");
+}
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 * {
     font-family: "Special Elite", monospace;
@@ -63,7 +67,7 @@ h1 {
     padding: 10px 20px 10px 20px;
 }
 #start-button, #start-game {
-    font-family: 'Bombardment 3D';
+    font-family: 'Bombardment';
     font-size: 1.1em;
     font-weight: 100;
     letter-spacing: 0.2rem;
@@ -78,6 +82,7 @@ h1 {
     cursor: pointer;
 }
 #start-game {
+    z-index: 1;
     font-size: 1.4em;
     height: 70px;
     width: 250px;
@@ -140,7 +145,7 @@ h1 {
     }
         #player-squares, #bot-squares {
             padding: 17px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 39px rgba(0,0,0,0.3);
             border-radius: 10px;
             background-color: #C4A484;
         }
@@ -159,6 +164,7 @@ h1 {
         grid-column: 1/3;
     }
     .scores {
+        z-index: 1;
         font-family: 'Press Start 2P', cursive;
         justify-self: center;
         align-self: center;
@@ -167,6 +173,8 @@ h1 {
         font-weight: 500;
         font-size: 1.2em;
         text-transform: uppercase;
+        border: 3px dotted white;
+        padding: 10px;
     }
 
 
@@ -339,4 +347,136 @@ h1 {animation-name: slide-down}
         opacity: 100%;
         border-color: rgb(0, 0, 0);
     } */
+}
+
+
+/* MEDIA QUERIES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media (min-width: 0px) and (max-width: 370px) {
+ }
+ @media (min-width: 370px) and (max-width: 615px) {
+    #activity {
+        width: 250px;
+        font-size: 0.6em;
+        left: calc(50vw - 125px - 20px);
+        margin: 5px;
+        padding: 10px;
+        border: 5px double black;
+    }
+    #landing-cont {
+        grid-template-columns: 350px;
+        grid-template-rows: repeat(4, 70px);
+        gap: 5px;
+        justify-items: center;
+        align-items: center;
+    }
+    h1 {
+        font-size: 3em;
+        font-weight: 100;
+    }
+    #enter-name {
+        font-size: 0.7em;
+    }
+    #player-prompt {
+        font-size: 0.6em;
+    }
+    #player-name {
+        font-size: 0.7em;
+        height: 20px;
+        padding: 5px 10px 5px 10px;
+    }
+    #start-button, #start-game {
+        font-size: 1.0em;
+        letter-spacing: 0.2rem;
+        padding: 15px;
+    }
+    #build-cont, #player-cont, #bot-cont {
+        grid-template-rows: 30px 1fr 30px;
+        grid-template-columns: 300px;
+    }
+        .prompts {
+            font-weight: 100;
+            border: 5px double black;
+            padding: 10px 9px 10px 9px;
+            box-shadow: 0 .2em gray; 
+        }
+        #enter-name {
+            max-width: 300px;
+        }
+        #player-prompt {
+            max-width: 290px;
+        }
+        #player-squares, #bot-squares {
+            grid-template-columns: repeat(10, 20px);
+            grid-template-rows: repeat(10, 20px);
+            gap: 5px;
+        }
+            #player-squares, #bot-squares {
+                padding: 10px;
+                margin: 25px;
+                box-shadow: 0 20px 39px rgba(0,0,0,0.3);
+            }
+        .scores {
+            font-weight: 500;
+            font-size: 1.0em;
+            padding: 10px;
+        }
+ }
+ @media (min-width: 615px) and (max-width: 1500px) {
+ }
+ @media (min-width: 1500px) and (max-width: 8000px) {
+    #landing-cont {
+        grid-template-columns: 900px;
+        grid-template-rows: repeat(4, 100px);
+        gap: 10px;
+        justify-items: center;
+        align-items: center;
+    }
+    h1 {
+        font-size: 7em;
+        font-weight: 400;
+    }
+    #enter-name, #player-prompt {
+        font-size: 1.3em;
+    }
+    #player-name {
+        font-size: 1.2em;
+    }
+    #start-button, #start-game {
+        font-size: 1.4em;
+        letter-spacing: 0.2rem;
+        padding: 25px;
+    }
+    #build-cont, #player-cont, #bot-cont {
+        grid-template-rows: 60px 1fr 60px;
+        grid-template-columns: 800px;
+    }
+        .prompts {
+            font-size: 1.0em;
+            font-weight: 100;
+            border: 5px double black;
+            padding: 30px 19px 30px 19px;
+            box-shadow: 0 .2em gray; 
+        }
+        #enter-name {
+            max-width: 550px;
+        }
+        #player-prompt {
+            max-width: 750px;
+        }
+        #player-squares, #bot-squares {
+            grid-template-columns: repeat(10, 40px);
+            grid-template-rows: repeat(10, 40px);
+            gap: 5px;
+
+        }
+            #player-squares, #bot-squares {
+                padding: 20px;
+                box-shadow: 0 20px 39px rgba(0,0,0,0.3);
+            }
+        .scores {
+            font-weight: 500;
+            font-size: 1.4em;
+            padding: 14px;
+        }
 }
