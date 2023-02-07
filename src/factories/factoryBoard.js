@@ -20,7 +20,7 @@ function factoryBoard (boardArr) {
 
         // Update DOM to show ship
         for (let j = 0; j < ship.length; j++) {
-          square.style.backgroundColor = 'grey';
+          square.style.backgroundColor = '#002066';
           square = square.nextSibling;
         }
 
@@ -29,13 +29,14 @@ function factoryBoard (boardArr) {
         return true
       } else {
         console.log('Ship will not fit! Try again.')
+        document.getElementById('activity').innerHTML = 'Ship will not fit! Try again.';
         return false
       }
     },
     receiveAttack (x, y, square) {
       if (this.boardArr[x][y].length === 0) { // IF MISSED
         this.boardArr[x][y] = 'MISS';
-        square.style.backgroundColor = 'blue';
+        square.style.backgroundColor = '#05386b';
         return false
       } else if (this.boardArr[x][y].length !== 0) { // IF HIT
         this.boardArr[x][y].hit = this.boardArr[x][y].hit + 1;

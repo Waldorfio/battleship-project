@@ -40,6 +40,7 @@ function botFireShot (p1, idxToCoords) {
   const squares = document.getElementById('player-squares').childNodes;
   if (squares[idx].style.backgroundColor !== 'white') {
     console.log('Bot made an illegal move. Trying again.');
+    document.getElementById('activity').innerHTML = 'Bot made an illegal move. Trying again.';
     botFireShot(p1, idxToCoords);
   } else {
     const hitShip = p1.gameBoard.receiveAttack(x, y, squares[idx]);

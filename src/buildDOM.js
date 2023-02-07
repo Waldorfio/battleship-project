@@ -80,7 +80,7 @@ const shipIdx = [0];
 function clickedSquare (i, square, shipIdx) {
   // Check if placed all ships or not
   if (shipIdx[0] === 6) {
-    document.getElementById('player-prompt').innerHTML = 'Done! Now hit START when you are ready!';
+    document.getElementById('player-prompt').innerHTML = 'Done!';
 
     // Place a new button element below grid to start game
     const startGame = document.createElement('input');
@@ -148,7 +148,7 @@ function buildGameBoards () {
   botScore.id = 'bot-score';
   playerScore.className = 'scores';
   botScore.className = 'scores';
-  playerScore.innerHTML = 'Player Score: 0';
+  playerScore.innerHTML = 'Your Score: 0';
   botScore.innerHTML = 'Bot Score: 0';
   playerCont.appendChild(playerScore);
   botCont.appendChild(botScore);
