@@ -9,6 +9,7 @@ body,html {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Hides scrollbar across x-axis */
+    background-color: #b9b9b9;
 }
 a {    /* Removes default styling for links, and React Links */
     text-decoration: none;
@@ -16,24 +17,6 @@ a {    /* Removes default styling for links, and React Links */
 }
 /*–––––––––––––––––––––––––––––––––––––––––––––––– */
 
-/* VARIABLES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-:root { /* Defining dark mode variables */
-    --text: white;
-    --bgColor1: #5cdb95;
-    --bgColor2: #05386b;
-    --bgColor3: #747474;
-
-    --header: #5cdb95;
-    --header-text: #05386b;
-
-    --footer: #05386b;
-    --footer-text: white;
-
-    --font1: 'Poppins', sans-serif;
-    --font2: 'ONRAMP', sans-serif;
-    --font3: 'Rajdhani', sans-serif;
-}
 
 /* LANDING PAGE
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -43,16 +26,39 @@ h1 {
     font-weight: 100;
     letter-spacing: 0.1rem;
 }
-#player-name {
-    height: 40px;
-    border: 1px solid grey;
-    border-radius: 7px;
-    font-size: 1.1em;
-    font-weight: 500;
-    letter-spacing: 0.2rem;
-    padding: 10px;
+#activity {
+    width: 500px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.0em;
+    font-weight: 100;
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: 0rem;
+    position: fixed;
+    bottom: 0;
+    left: calc(50vw - 250px - 35px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    margin: 5px;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 5px double black;
 }
-#start-button {
+#enter-name {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9em;
+}
+#player-name {
+    font-family: 'Press Start 2P', cursive;
+    height: 40px;
+    border: 5px double black;
+    border-radius: 7px;
+    font-size: 1.0em;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    padding: 10px 20px 10px 20px;
+}
+#start-button, #start-game {
     font-family: 'bombardment';
     font-size: 1.1em;
     font-weight: 100;
@@ -64,13 +70,18 @@ h1 {
     background-color: lightgray;
     color: rgb(0, 0, 0);
 	border-radius: 7px;
-        -webkit-border-radius: 7px;
-        -moz-border-radius: 7px;
-        -o-border-radius: 7px;
     box-shadow: 0 .2em gray; 
     cursor: pointer;
 }
-#start-button:active {
+#start-game {
+    font-size: 1.4em;
+    height: 70px;
+    width: 250px;
+    padding: 10px 30px 10px 30px;
+    align-self: center;
+    justify-self: center;
+}
+#start-button:active, #start-game:active {
 	box-shadow: none;
 	position: relative;
 	top: .2em;
@@ -96,11 +107,25 @@ h1 {
 #build-cont, #player-cont, #bot-cont {
     display: grid;
     grid-template-rows: 40px 1fr 40px;
+    grid-template-columns: 500px;
+    align-items: center;
+    justify-items: center;
 }
     .prompts {
+        font-family: 'Press Start 2P', cursive;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        font-weight: 100;
         align-self: center;
         justify-self: center;
-        font-size: 1.1em;
+        color: rgb(0, 0, 0);
+        border: 5px double black;
+        display: inline-block;
+        margin: 5px;
+        padding: 20px 12px 20px 12px;
+        background-color: lightgray;
+        color: rgb(0, 0, 0);
+        box-shadow: 0 .2em gray; 
     }
     #player-squares, #bot-squares {
         display: grid;
@@ -109,37 +134,45 @@ h1 {
         gap: 3px;
         margin: 30px;
     }
+        #player-squares, #bot-squares {
+            padding: 17px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            background-color: #C4A484;
+        }
         .square {
             border: 1px solid black;
+            background-color: rgb(197, 197, 197);
+            border-radius: 3px;
         }
         #bot-squares > .square:hover {
-            border: 3px solid red;
+            border: 4px solid red;
         }
         #build-cont > #player-squares > .square:hover {
-            border: 3px solid green;
+            border: 4px solid #5cdb95;
         }
     #restart-game {
         grid-column: 1/3;
     }
     .scores {
+        font-family: 'Press Start 2P', cursive;
         justify-self: center;
         align-self: center;
-        color: blue;
+        text-align: center;
+        color: white;
+        font-weight: 500;
+        font-size: 1.2em;
+        text-transform: uppercase;
     }
 
 
 /* ANIMATIONS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-#enter-name, .prompts { /* Typing effect */
+#enter-name, #player-prompt { /* Typing effect */
     opacity: 0%;
     animation-fill-mode: forwards;
-    text-transform: capitalize;
-    font-size: 1.2em;
-    font-weight: 200;
-    font-family: monospace;
     overflow: hidden;
-    border-right: .15em solid rgb(0, 0, 0);
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: .15em; /* Adjust as needed */
@@ -148,7 +181,7 @@ h1 {
         cursor 1.0s step-end infinite;
     animation-delay: 1.0s;
 }
-.prompts {
+#player-prompt {
     animation-delay: 0s;
 }
 h1 {
@@ -162,7 +195,8 @@ h1 {
     animation-timing-function: cubic-bezier();
         -webkit-animation-timing-function: cubic-bezier();
 }
-#player-name, #start-button {
+#player-name, #start-button, #activity,
+#player-squares, #bot-squares, .scores {
     opacity: 0;
     visibility: hidden;
     animation-fill-mode: forwards;
@@ -177,26 +211,19 @@ h1 {
 h1 {
     animation-delay: 0s;
 }
-#placeholder {
+#player-squares, #bot-squares {
     animation-delay: 0.3s;
-        -webkit-animation-delay: 0.3s;
-        -ms-animation-delay: 0.3s;
-        -moz-animation-delay: 0.3s;
 }
-#placeholder {
-    animation-delay: 0.6s;
-        -webkit-animation-delay: 0.6s;
-        -ms-animation-delay: 0.6s;
-        -moz-animation-delay: 0.6s;
-}
-#player-name, #start-button {
+#player-name, #start-button, #activity, .scores {
     animation-delay: 1.4s;
         -webkit-animation-delay: 1.4s;
         -ms-animation-delay: 1.4s;
         -moz-animation-delay: 1.4s;
 }
+.scores {animation-name: slide-up}
 #player-name {animation-name: slide-left}
 #start-button {animation-name: slide-right}
+#activity, #player-squares, #bot-squares {animation-name: grow-in}
 h1 {animation-name: slide-down}
 @keyframes slide-right {
     0% {
@@ -303,10 +330,9 @@ h1 {animation-name: slide-down}
 @keyframes cursor {
     0%, 100% { 
         opacity: 100%;
-        border-color: transparent;
     }
-    50% {
+    /* 50% {
         opacity: 100%;
         border-color: rgb(0, 0, 0);
-    }
+    } */
 }
