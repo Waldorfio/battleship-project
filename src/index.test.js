@@ -5,7 +5,7 @@ const factoryShip = require('./factories/factoryShip');
 const factoryBoard = require('./factories/factoryBoard');
 
 ship = factoryShip(5, false, 'carrier', 0);
-square = '<div class="square" style="background-color: blue;"></div>';
+square = '<div class="square" style="background-color: #05386b;"></div>';
 
 describe('testing factoryBoard', () => {
   // Initialising
