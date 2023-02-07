@@ -1,3 +1,4 @@
+@import url(//db.onlinewebfonts.com/c/6c418c270348070b8e5ebbaf78a94917?family=Bombardment+3D);
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 * {
     font-family: "Special Elite", monospace;
@@ -21,7 +22,7 @@ a {    /* Removes default styling for links, and React Links */
 /* LANDING PAGE
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1 {
-    font-family: 'bombardment 3d';
+    font-family: 'Bombardment 3D';
     font-size: 5em;
     font-weight: 100;
     letter-spacing: 0.1rem;
