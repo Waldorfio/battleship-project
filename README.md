@@ -1,58 +1,42 @@
-# Project: Battleship Game
-An implementation of the classic battleship game.
-Application developed using JavaScript, CSS3, and HTML5. Packaged using Webpack.
+# Battleship Game
+
+A recreation of the classic game, built using JavaScript!
+Take turns to guess and attack your opponent's board.
+
 ## [Live Link 👈](https://waldorfio.github.io/battleship-project/)
+
+![](animation.gif)
 
 ### Features
 - Create a custom gameboard with various battleships	
-- Verse an randomised AI
-    - Interact with a hidden enemy gameboard to fire shots
-- Instantly observe shots received on your own gameboard (from the bot)
+- Verse a randomised AI
+- Instantly observe shots received
+- Message board announcing ships sunk
 - View a scoreboard tracking ships sunk
 - Restart the game once a winner is announced
 
-![](screencap.PNG)
-
-### Goals
-- Practice the basics of testing using Jest
+#### Goals
 - Practice working with Test Driven Development (TDD) concepts in mind
 - Actively avoid running into the tightly-coupled problem, through the use of TDD
+- Utilize modern technology while maintaining traditional elements
+- Create an interactive, smooth and responsive UI (scalable across devices)
 
-### Challenges Faced
-- Learning Jest
-- Actively applying TDD, over console.logs and DOM error traceback
+#### Challenges Faced
+- Ensuring game logic was working correctly
+- Actively applying Test Driven Development
 - Actively developing pure functions
+- Creating an attractive and interactive front-end
 
-## How to run the app
-### 1. Click the [hosted link](https://waldorfio.github.io/battleship-project/)
+## Local Installation
+1.	Clone the repository `git clone https://github.com/Waldorfio/battleship-project.git`
+2.	Install the dependencies `npm install`
+3.	Open `index.html` in your browser
+4.	Play the game!
 
-OR
+## Technologies Used
+- JavaScript
+- CSS
+- HTML
+- TDD with Jest
+- Webpack for building and bundling the application
 
-### 2. Host it locally
-1.	Either fork or download the app and open the folder in the cli
-2.	Install all dependencies using the `npm i` command
-3.	Start the web server using the `npm run local` command. The app will be served at http://localhost:8080/
-4.	Go to  http://localhost:8080/ in your browser, and start playing the game!
-
-## How to use the app
-1. Enter your player name in the landing page
-2. Hit the START GAME button
-3. Cycle through and place your chosen battleships across your gameboard, in the x or y axis
-4. Wait for the AI to place their respective battleships
-5. Begin the game
-    - Place markers on your enemies blank gameboard
-    - 'Hits' will be marked on the gameboard
-    - Each player is given 1 turn, with a 'hit' giving the player an extra turn
-
-## Future Features
-- Randomise the bots initial ship placement
-- Giving the bot a bonus round if player hits ship
-- AI with scaling difficulty
-- Selection of axis for ship placement
-- Rebuild codebase using react.js
-
-## Dependencies
-- CSS Loader
-- File Loader
-- Jest
-- Webpack CLI
