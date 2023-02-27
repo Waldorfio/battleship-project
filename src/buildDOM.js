@@ -134,8 +134,8 @@ function buildGameBoards () {
   outerCont.appendChild(botCont);
 
   // Adjust grid styling on outer container, to make grids side-by-side
-  outerCont.style['grid-template-columns'] = 'repeat(2, 1fr)';
-  outerCont.style['grid-template-rows'] = '1fr 100px';
+  outerCont.style['grid-template-columns'] = 'repeat(auto, 1fr)';
+  outerCont.style['grid-template-rows'] = 'repeat(auto, 1fr) 100px';
 
   // Rename bot's element children, as they were duplicated from the player
   botPrompt.id = 'bot-prompt'

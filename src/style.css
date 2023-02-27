@@ -352,9 +352,7 @@ h1 {animation-name: slide-down}
 
 /* MEDIA QUERIES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-@media (min-width: 0px) and (max-width: 370px) {
- }
- @media (min-width: 370px) and (max-width: 615px) {
+@media (min-width: 0px) and (max-width: 615px) {
     #activity {
         width: 250px;
         font-size: 0.6em;
@@ -394,11 +392,17 @@ h1 {animation-name: slide-down}
         grid-template-rows: 30px 1fr 30px;
         grid-template-columns: 300px;
     }
+    #player-cont {grid-row: 1/2}
+    #bot-cont {
+        grid-row: 2/3;
+        margin-bottom: 50px;
+    }
         .prompts {
             font-weight: 100;
             border: 5px double black;
             padding: 10px 9px 10px 9px;
             box-shadow: 0 .2em gray; 
+            font-size: 0.6em;
         }
         #enter-name {
             max-width: 300px;
@@ -421,10 +425,17 @@ h1 {animation-name: slide-down}
             font-size: 1.0em;
             padding: 10px;
         }
+        .square {
+            border-radius: 2px;
+        }
  }
  @media (min-width: 615px) and (max-width: 1500px) {
+    #player-cont {grid-column: 1/2}
+    #bot-cont {grid-column: 2/3}
  }
  @media (min-width: 1500px) and (max-width: 8000px) {
+    #player-cont {grid-column: 1/2}
+    #bot-cont {grid-column: 2/3}
     #landing-cont {
         grid-template-columns: 900px;
         grid-template-rows: repeat(4, 100px);
